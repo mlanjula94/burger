@@ -1,0 +1,30 @@
+<h1 class="text-warning font-weight-bold text-center">BURGER BUCKET LIST!</h1>
+<div class="row">
+  <div class="col-4">
+    <div class="h2 text-warning font-weight-bold text-center">Burgers that are not devourved!</div>
+
+    <ol>
+      {{#each burgers}} {{#unless devoured}} {{> burgers/burger-block devour=true}} {{/unless}} {{/each}}
+    </ol>
+  </div>
+
+  <div class="col-4">
+     <div class="h2 text-warning font-weight-bold text-center">Add a burger</div>
+    <form action="/api/burgers" method="POST" class="create-form">
+
+      <label for="ca">Burger Name:</label>
+      <input type="text" name="burger_name">
+
+      <button type="button" class="btn btn-primary btn-sm btn-block" id="new_burger" type="submit">Add burger</button>
+    </form>
+  </div>
+
+
+  <div class="col-4">
+     <div class="h2 text-warning font-weight-bold text-center">Burgers that are devourved!</div>
+
+    <ol>
+      {{#each burgers}} {{#if devoured}} {{> burgers/burger-block devour=false}} {{/if}} {{/each}}
+    </ol>
+  </div>
+</div>
